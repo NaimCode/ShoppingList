@@ -1,18 +1,10 @@
-import { useState,useEffect } from "react";
+import { useState} from "react";
 import AddItem from "./AddItem";
 import ListItem from "./ListItem";
 function ShopppingList() {
 
     const [items, setitems] = useState([]);
-    const [total, settotal] = useState(0);
 
-    useEffect(() => {
-        if(items.length>0)
-            settotal((items.map((item)=>parseFloat(item.price))).reduce((a,b)=>a+b));
-        else
-            settotal(0);
-        
-    }, [items]);
 
     const onAdd = (item) => {
         setitems(old=>[item,...old]);
@@ -40,7 +32,7 @@ function ShopppingList() {
         </button>
 
         <div className="flex justify-end">
-            <h3 className="text-sm font-bold">Total : {total}$</h3>
+            <h3 className="text-sm font-bold">Total : {items.map((item)=>parseFloat(item.price)).reduce((a,b)=>a+b,0)}$</h3>
         </div>
     </div>;
 }
