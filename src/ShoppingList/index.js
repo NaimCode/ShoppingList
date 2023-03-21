@@ -7,9 +7,11 @@ function ShopppingList() {
     const [total, settotal] = useState(0);
 
     useEffect(() => {
-        if(items.length>0){
+        if(items.length>0)
             settotal((items.map((item)=>item.price)).reduce((a,b)=>a+b,0));
-        }
+        else
+            settotal(0);
+        
     }, [items]);
 
     const onAdd = (item) => {
