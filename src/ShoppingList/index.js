@@ -8,7 +8,7 @@ function ShopppingList() {
 
     useEffect(() => {
         if(items.length>0)
-            settotal((items.map((item)=>item.price)).reduce((a,b)=>a+b));
+            settotal((items.map((item)=>parseFloat(item.price))).reduce((a,b)=>a+b));
         else
             settotal(0);
         
